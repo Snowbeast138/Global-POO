@@ -1,0 +1,15 @@
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\bin\Debug\net6.0\Global-POO.exe
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\bin\Debug\net6.0\Global-POO.deps.json
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\bin\Debug\net6.0\Global-POO.runtimeconfig.json
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\bin\Debug\net6.0\Global-POO.dll
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\bin\Debug\net6.0\ref\Global-POO.dll
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\bin\Debug\net6.0\Global-POO.pdb
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\obj\Debug\net6.0\Global-POO.csproj.AssemblyReference.cache
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\obj\Debug\net6.0\Global-POO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\obj\Debug\net6.0\Global-POO.AssemblyInfoInputs.cache
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\obj\Debug\net6.0\Global-POO.AssemblyInfo.cs
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\obj\Debug\net6.0\Global-POO.csproj.CoreCompileInputs.cache
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\obj\Debug\net6.0\Global-POO.dll
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\obj\Debug\net6.0\ref\Global-POO.dll
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\obj\Debug\net6.0\Global-POO.pdb
+C:\Users\snowb\OneDrive\Escritorio\CETI_ING\2do Semestre\POO\Global-POO\obj\Debug\net6.0\Global-POO.genruntimeconfig.cache
