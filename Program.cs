@@ -46,12 +46,56 @@ class Program
             List<Pokemon> pokemons =
                 JsonSerializer.Deserialize<List<Pokemon>>(jsonString);
 
-            ShowPokedex (pokemons);
+            
         }
         else
         {
             WriteLine("El archivo Pokedex.Json no existe.");
         }
+    }
+
+    static void findPokemon(List<Pokemon> pokemons, string name)
+    {
+        Pokemon pokemon = new();
+
+        if (pokemons.Find(x => x.name.english == name) != null)
+        {
+            pokemon =  pokemons.Find(x => x.name.english == name);
+        }
+        else
+        {
+            string res;
+            do
+            {
+                WriteLine("No existe registro de ese pokemon asegurese de haber escrito bien su nombre o que sea menor a 9 GEN");
+                Write("Vuelva a escribir el nombre del pokemon:");
+                res = ReadLine();
+            }
+            while (pokemons.Find(x => x.name.english == res) == null);
+            pokemon = pokemons.Find(x => x.name.english == res);
+        }
+        ShowPokemon(pokemon);
+    }
+
+    static void ShowPokemon(Pokemon pokemon)
+    {
+        WriteLine($"ID: {pokemon.id}");
+
+        WriteLine($"Pokemon: {pokemon.name.english}");
+
+        WriteLine("Tipos:");
+        foreach (var type in pokemon.type)
+        {
+            WriteLine($"- {type}");
+        }
+        WriteLine();
+        WriteLine("Estadísticas base:");
+        WriteLine($"HP: {pokemon.BaseStats.HP}");
+        WriteLine($"Ataque: {pokemon.BaseStats.Attack}");
+        WriteLine($"Defensa: {pokemon.BaseStats.Defense}");
+        WriteLine($"Ataque Especial: {pokemon.BaseStats.SpAttack}");
+        WriteLine($"Defensa Especial: {pokemon.BaseStats.SpDefense}");
+        WriteLine($"Velocidad: {pokemon.BaseStats.Speed}");
     }
 
     static void ShowPokedex(List<Pokemon> pokemons)
