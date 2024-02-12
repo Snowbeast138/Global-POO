@@ -46,7 +46,8 @@ class Program
             List<Pokemon> pokemons =
                 JsonSerializer.Deserialize<List<Pokemon>>(jsonString);
 
-            
+           
+
         }
         else
         {
@@ -54,9 +55,16 @@ class Program
         }
     }
 
+
+     
+
+
     static void findPokemon(List<Pokemon> pokemons, string name)
     {
         Pokemon pokemon = new();
+
+        name = name.ToLower();
+
 
         if (pokemons.Find(x => x.name.english == name) != null)
         {
@@ -70,6 +78,7 @@ class Program
                 WriteLine("No existe registro de ese pokemon asegurese de haber escrito bien su nombre o que sea menor a 9 GEN");
                 Write("Vuelva a escribir el nombre del pokemon:");
                 res = ReadLine();
+                res = res.ToLower();
             }
             while (pokemons.Find(x => x.name.english == res) == null);
             pokemon = pokemons.Find(x => x.name.english == res);
