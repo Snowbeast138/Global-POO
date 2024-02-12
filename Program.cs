@@ -94,6 +94,9 @@ class Program
             case 4:{
 
             }break;
+            case 5:{
+                DeleteTeam();
+            }break;
             default:{WriteLine("Eso no es una opcion");}break;
         }
     }
@@ -147,6 +150,22 @@ class Program
         }
     }
 
+    static void ShowTeam(Team team){
+     WriteLine("----------------------------");
+     WriteLine($"TeamId:{team.TeamId}");
+     WriteLine("Equipo Pokemon:");
+     foreach(var pokemon in team.pokemonsTeam){
+        WriteLine($"-{pokemon.pokemon.name.english}");
+        WriteLine("Type/s:");
+        foreach(var type in pokemon.pokemon.type){
+            WriteLine($" -{type}");
+        }
+        WriteLine();
+        }
+     WriteLine("------------------------");
+
+    }
+
 
      static void CreateTeam(){
         List<Team> teams = DeserializeTeamsJson();
@@ -174,7 +193,44 @@ class Program
 
         string json = JsonSerializer.Serialize(teams, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText("./Teams.Json",json);
+
+        WriteLine("Equipo creado Correctamente!");
+        ShowTeam(team);
      }
+
+
+     static void DeleteTeam(){
+        ShowTeams();
+        Write("Ingresa el TeamId del equipo que deseas eliminar:");
+        int res;
+        while(!int.TryParse(ReadLine(), out res)){
+            WriteLine("Ese no es un TeamId");
+        }
+        Team team = findTeam(res);
+        List<Team> teams = DeserializeTeamsJson();
+        //TODO: Remove has an error
+        teams.Remove(new Team(){TeamId = team.TeamId, pokemonsTeam= team.pokemonsTeam});
+        WriteLine(teams.Count);
+     }
+
+    static Team findTeam(int TeamId){
+        List<Team> teams = DeserializeTeamsJson();
+        if(teams.Find(x=> x.TeamId == TeamId)!=null){
+            
+            Team team = teams.Find(x=> x.TeamId == TeamId);
+            return team;
+        }else{
+            int res;
+            do{
+            WriteLine("No existe ese team id");
+             while(!int.TryParse(ReadLine(), out res)){
+                WriteLine("Ese no es un TeamId");
+             }
+            }while(teams.Find(x=> x.TeamId == res)==null);
+            Team team = teams.Find(x=> x.TeamId == res);
+            return team;
+        }
+    }
 
 
     static Pokemon findPokemon(List<Pokemon> pokemons, string name)
@@ -195,7 +251,7 @@ class Program
             string res;
             do
             {
-                WriteLine("No existe registro de ese pokemon asegurese de haber escrito bien su nombre o que sea menor a 9 GEN");
+                WriteLine("No existe registro de ese pokemon asegurese de haber escrito bien su nombre o que sea menor a 8 GEN");
                 Write("Vuelva a escribir el nombre del pokemon:");
                 res = ReadLine();
                 res = res.ToLower();

@@ -127,5 +127,131 @@
         }
       }
     ]
+  },
+  {
+    "TeamId": 995,
+    "pokemonsTeam": [
+      {
+        "PokemonTeamId": 1,
+        "pokemon": {
+          "id": 24,
+          "name": {
+            "english": "arbok"
+          },
+          "type": [
+            "Poison"
+          ],
+          "BaseStats": {
+            "HP": 60,
+            "Attack": 95,
+            "Defense": 69,
+            "SpAttack": 65,
+            "SpDefense": 79,
+            "Speed": 80
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 2,
+        "pokemon": {
+          "id": 489,
+          "name": {
+            "english": "phione"
+          },
+          "type": [
+            "Water"
+          ],
+          "BaseStats": {
+            "HP": 80,
+            "Attack": 80,
+            "Defense": 80,
+            "SpAttack": 80,
+            "SpDefense": 80,
+            "Speed": 80
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 3,
+        "pokemon": {
+          "id": 467,
+          "name": {
+            "english": "magmortar"
+          },
+          "type": [
+            "Fire"
+          ],
+          "BaseStats": {
+            "HP": 75,
+            "Attack": 95,
+            "Defense": 67,
+            "SpAttack": 125,
+            "SpDefense": 95,
+            "Speed": 83
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 4,
+        "pokemon": {
+          "id": 704,
+          "name": {
+            "english": "goomy"
+          },
+          "type": [
+            "Dragon"
+          ],
+          "BaseStats": {
+            "HP": 45,
+            "Attack": 50,
+            "Defense": 35,
+            "SpAttack": 55,
+            "SpDefense": 75,
+            "Speed": 40
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 5,
+        "pokemon": {
+          "id": 582,
+          "name": {
+            "english": "vanillite"
+          },
+          "type": [
+            "Ice"
+          ],
+          "BaseStats": {
+            "HP": 36,
+            "Attack": 50,
+            "Defense": 50,
+            "SpAttack": 65,
+            "SpDefense": 60,
+            "Speed": 44
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 6,
+        "pokemon": {
+          "id": 375,
+          "name": {
+            "english": "metang"
+          },
+          "type": [
+            "Steel",
+            "Psychic"
+          ],
+          "BaseStats": {
+            "HP": 60,
+            "Attack": 75,
+            "Defense": 100,
+            "SpAttack": 55,
+            "SpDefense": 80,
+            "Speed": 50
+          }
+        }
+      }
+    ]
   }
 ]
