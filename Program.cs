@@ -73,20 +73,20 @@ class Program
 
 
     static void TeamMenu(){
-        WriteLine("1-Crear Equipo\n2-Generar Equipo Random\n3-Modificar Equipo\n4-Eliminar Equipo");
+        WriteLine("1-Mostrar Equipos\n2-Crear Equipo\n3-Generar Equipo Random\n4-Modificar Equipo\n5-Eliminar Equipo");
         int res;
-        while(!int.TryParse(ReadLine(), out res)|| res > 4 || res < 1){
+        while(!int.TryParse(ReadLine(), out res)|| res > 5 || res < 1){
             WriteLine("Esa no es una opcion");
         }
 
         switch (res)
         {
             case 1:{
-                WriteLine("Vamos a crear un equipo!");
-                CreateTeam();
+                ShowTeams();
             }break;
             case 2:{
-
+                WriteLine("Vamos a crear un equipo!");
+                CreateTeam();
             }break;
             case 3:{
 
@@ -123,6 +123,30 @@ class Program
             return null;
         }
     }
+
+    static void ShowTeams(){
+        List<Team> teams = DeserializeTeamsJson();
+        if(teams.Count > 0){
+            foreach(var team in teams){
+                WriteLine("----------------------------");
+                WriteLine($"TeamId:{team.TeamId}");
+                WriteLine("Equipo Pokemon:");
+                foreach(var pokemon in team.pokemonsTeam){
+                    WriteLine($"-{pokemon.pokemon.name.english}");
+                    WriteLine("Type/s:");
+                    foreach(var type in pokemon.pokemon.type){
+                        WriteLine($" -{type}");
+                    }
+                    WriteLine();
+                }
+                WriteLine("------------------------");
+            }
+        }
+        else{
+            WriteLine("No hay Equipos Guardados");
+        }
+    }
+
 
      static void CreateTeam(){
         List<Team> teams = DeserializeTeamsJson();
