@@ -1,128 +1,127 @@
 [
   {
-    "TeamId": 410,
+    "TeamId": 81,
     "pokemonsTeam": [
       {
         "PokemonTeamId": 1,
         "pokemon": {
-          "id": 744,
+          "id": 9,
           "name": {
-            "english": "rockruff"
+            "english": "blastoise"
           },
           "type": [
-            "Rock"
+            "Water"
           ],
           "BaseStats": {
-            "HP": 45,
-            "Attack": 65,
-            "Defense": 40,
-            "SpAttack": 30,
-            "SpDefense": 40,
-            "Speed": 60
+            "HP": 79,
+            "Attack": 83,
+            "Defense": 100,
+            "SpAttack": 85,
+            "SpDefense": 105,
+            "Speed": 78
           }
         }
       },
       {
         "PokemonTeamId": 2,
         "pokemon": {
-          "id": 79,
+          "id": 4,
           "name": {
-            "english": "slowpoke"
+            "english": "charmander"
           },
           "type": [
-            "Water",
-            "Psychic"
+            "Fire"
           ],
           "BaseStats": {
-            "HP": 90,
-            "Attack": 65,
-            "Defense": 65,
-            "SpAttack": 40,
-            "SpDefense": 40,
-            "Speed": 15
+            "HP": 39,
+            "Attack": 52,
+            "Defense": 43,
+            "SpAttack": 60,
+            "SpDefense": 50,
+            "Speed": 65
           }
         }
       },
       {
         "PokemonTeamId": 3,
         "pokemon": {
-          "id": 402,
+          "id": 785,
           "name": {
-            "english": "kricketune"
+            "english": "tapu koko"
           },
           "type": [
-            "Bug"
+            "Electric",
+            "Fairy"
           ],
           "BaseStats": {
-            "HP": 77,
-            "Attack": 85,
-            "Defense": 51,
-            "SpAttack": 55,
-            "SpDefense": 51,
-            "Speed": 65
+            "HP": 70,
+            "Attack": 115,
+            "Defense": 85,
+            "SpAttack": 95,
+            "SpDefense": 75,
+            "Speed": 130
           }
         }
       },
       {
         "PokemonTeamId": 4,
         "pokemon": {
-          "id": 31,
+          "id": 523,
           "name": {
-            "english": "nidoqueen"
+            "english": "zebstrika"
           },
           "type": [
-            "Poison",
-            "Ground"
+            "Electric"
           ],
           "BaseStats": {
-            "HP": 90,
-            "Attack": 92,
-            "Defense": 87,
-            "SpAttack": 75,
-            "SpDefense": 85,
-            "Speed": 76
+            "HP": 75,
+            "Attack": 100,
+            "Defense": 63,
+            "SpAttack": 80,
+            "SpDefense": 63,
+            "Speed": 116
           }
         }
       },
       {
         "PokemonTeamId": 5,
         "pokemon": {
-          "id": 472,
+          "id": 284,
           "name": {
-            "english": "gliscor"
+            "english": "masquerain"
           },
           "type": [
-            "Ground",
+            "Bug",
             "Flying"
           ],
           "BaseStats": {
-            "HP": 75,
-            "Attack": 95,
-            "Defense": 125,
-            "SpAttack": 45,
-            "SpDefense": 75,
-            "Speed": 95
+            "HP": 70,
+            "Attack": 60,
+            "Defense": 62,
+            "SpAttack": 100,
+            "SpDefense": 82,
+            "Speed": 80
           }
         }
       },
       {
         "PokemonTeamId": 6,
         "pokemon": {
-          "id": 663,
+          "id": 521,
           "name": {
-            "english": "talonflame"
+            "english": "unfezant"
           },
           "type": [
-            "Fire",
+            "Normal",
             "Flying"
           ],
           "BaseStats": {
-            "HP": 78,
-            "Attack": 81,
-            "Defense": 71,
-            "SpAttack": 74,
-            "SpDefense": 69,
-            "Speed": 126
+            "HP": 80,
+            "Attack": 115,
+            "Defense": 80,
+            "SpAttack": 65,
+            "SpDefense": 55,
+            "Speed": 93
           }
         }
       }

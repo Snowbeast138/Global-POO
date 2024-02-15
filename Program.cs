@@ -39,8 +39,15 @@ public class Team{
 }
 
 public class PokemonTeam{
+    public PokemonTeam(int PokemonTeamId, Pokemon? pokemon)
+    {
+        this.PokemonTeamId = PokemonTeamId;
+        this.pokemon = pokemon;
+    }
+
     public int PokemonTeamId{ get; set;}
-    public Pokemon pokemon{get; set;} 
+    public Pokemon pokemon{get; set;}
+    // public int Id { get; }
 }
 
 
@@ -88,7 +95,7 @@ class Program
                 CreateTeam();
             }break;
             case 3:{
-
+                CreateRandomTeam();
             }break;
             case 4:{
 
@@ -182,9 +189,7 @@ class Program
         for(int i = 1; i <= 6; i++){
             Write($"Pokemon {i}:");
             string res = ReadLine();
-            PokemonTeam pokemonTeam = new();
-            pokemonTeam.PokemonTeamId = i;
-            pokemonTeam.pokemon = findPokemon(DeserializePokedexJson(), res);
+            PokemonTeam pokemonTeam = new(i, findPokemon(DeserializePokedexJson(), res));
             team.pokemonsTeam.Add(pokemonTeam);
         }
 
@@ -195,6 +200,41 @@ class Program
 
         WriteLine("Equipo creado Correctamente!");
         ShowTeam(team);
+     }
+
+     static void CreateRandomTeam(){
+        List<Team> teams = DeserializeTeamsJson();
+
+        List<Pokemon> pokemons = DeserializePokedexJson();
+       
+        Team randomTeam = new();
+
+        Random random = new Random();
+        
+        int TeamId = random.Next(1,1000);
+
+        while(teams.Any(x=> x.TeamId == TeamId)){
+            TeamId = random.Next(1,1000);
+        }
+
+        randomTeam.TeamId = TeamId;
+
+        for(int i = 1; i<=6;i++){
+            int id = random.Next(1,809);
+            while(randomTeam.pokemonsTeam.Any(x=> x.pokemon.id == id)){
+                id = random.Next(1,809);
+            }
+           PokemonTeam pokemon = new(i,pokemons.Find(x=>x.id == id));
+           randomTeam.pokemonsTeam.Add(pokemon);
+        }
+
+        teams.Add(randomTeam);
+        
+        string json = JsonSerializer.Serialize(teams, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("./Teams.Json",json);
+        
+        WriteLine("Equipo creado Correctamente!");
+        ShowTeam(randomTeam);
      }
 
 
