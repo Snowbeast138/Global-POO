@@ -33,7 +33,6 @@ public class BaseStats
     public int Speed { get; set; }
 }
 
-
 public class Team{
     public int TeamId{get;set;}
     public List<PokemonTeam> pokemonsTeam {get; set;} = new List<PokemonTeam>();
@@ -206,11 +205,21 @@ class Program
         while(!int.TryParse(ReadLine(), out res)){
             WriteLine("Ese no es un TeamId");
         }
-        Team team = findTeam(res);
+        Team teamToDelte = findTeam(res);
         List<Team> teams = DeserializeTeamsJson();
-        //TODO: Remove has an error
-        teams.Remove(new Team(){TeamId = team.TeamId, pokemonsTeam= team.pokemonsTeam});
-        WriteLine(teams.Count);
+        List<Team> updatedTeams = new();
+
+        foreach (var team in teams)
+        {
+            if(team.TeamId!=teamToDelte.TeamId){
+                updatedTeams.Add(team);
+            }
+        }
+        
+        WriteLine($"Equipo {teamToDelte.TeamId} Eliminado");
+        string json = JsonSerializer.Serialize(updatedTeams, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("./Teams.Json",json);
+       
      }
 
     static Team findTeam(int TeamId){
