@@ -98,7 +98,7 @@ class Program
                 CreateRandomTeam();
             }break;
             case 4:{
-
+                UpdateTeam();
             }break;
             case 5:{
                 DeleteTeam();
@@ -138,9 +138,10 @@ class Program
         if(teams.Count > 0){
             foreach(var team in teams){
                 WriteLine("----------------------------");
-                WriteLine($"TeamId:{team.TeamId}");
+                // WriteLine($"TeamId:{team.TeamId}");
                 WriteLine("Equipo Pokemon:");
                 foreach(var pokemon in team.pokemonsTeam){
+                    WriteLine($"PokemonTeamId:{pokemon.PokemonTeamId}");
                     WriteLine($"-{pokemon.pokemon.name.english}");
                     WriteLine("Type/s:");
                     foreach(var type in pokemon.pokemon.type){
@@ -161,6 +162,7 @@ class Program
      WriteLine($"TeamId:{team.TeamId}");
      WriteLine("Equipo Pokemon:");
      foreach(var pokemon in team.pokemonsTeam){
+        WriteLine($"PokemonTeamId:{pokemon.PokemonTeamId}");
         WriteLine($"-{pokemon.pokemon.name.english}");
         WriteLine("Type/s:");
         foreach(var type in pokemon.pokemon.type){
@@ -236,6 +238,61 @@ class Program
         WriteLine("Equipo creado Correctamente!");
         ShowTeam(randomTeam);
      }
+
+
+    static void UpdateTeam(){
+        ShowTeams();
+        Write("Ingresa el TeamId del equipo que deseas Modificar:");
+    
+        int res;
+        
+        while(!int.TryParse(ReadLine(), out res)){
+            WriteLine("Ese no es un TeamId");
+        }
+        
+        Team teamToUpdate = findTeam(res);
+        ShowTeam(teamToUpdate);
+
+        WriteLine("Que pokemon quieres modificar?:"); 
+        int pokemonId;
+        
+        while(!int.TryParse(ReadLine(), out pokemonId)|| pokemonId < 1 || pokemonId > 6){
+            WriteLine("Ese no es un PokemonTeamId");
+        }
+
+        WriteLine("Por cual pokemon deseas cambiarlo?:");
+        string name = ReadLine();
+        PokemonTeam newPokemon = new(pokemonId, findPokemon(DeserializePokedexJson(), name));
+        
+        int index = teamToUpdate.pokemonsTeam.FindIndex(x => x.PokemonTeamId == pokemonId);
+
+        if (index != -1)
+        {
+            teamToUpdate.pokemonsTeam[index] = newPokemon;
+            WriteLine("Pokemon cambiado exitosamente.");
+        }
+        else
+        {
+            WriteLine("No se encontró el Pokémon con el PokemonTeamId especificado.");
+        }
+
+        List<Team> teams = DeserializeTeamsJson();
+        List<Team> updatedTeams = new();
+
+        foreach (var team in teams)
+        {
+            if(team.TeamId!=teamToUpdate.TeamId){
+                updatedTeams.Add(team);
+            }else{
+                updatedTeams.Add(teamToUpdate);
+            }
+        }
+        WriteLine($"Equipo {teamToUpdate.TeamId} Actualizado");
+        string json = JsonSerializer.Serialize(updatedTeams, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("./Teams.Json",json);
+        ShowTeam(teamToUpdate);
+
+    }
 
 
      static void DeleteTeam(){

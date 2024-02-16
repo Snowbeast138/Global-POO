@@ -45,21 +45,21 @@
       {
         "PokemonTeamId": 3,
         "pokemon": {
-          "id": 785,
+          "id": 473,
           "name": {
-            "english": "tapu koko"
+            "english": "mamoswine"
           },
           "type": [
-            "Electric",
-            "Fairy"
+            "Ice",
+            "Ground"
           ],
           "BaseStats": {
-            "HP": 70,
-            "Attack": 115,
-            "Defense": 85,
-            "SpAttack": 95,
-            "SpDefense": 75,
-            "Speed": 130
+            "HP": 110,
+            "Attack": 130,
+            "Defense": 80,
+            "SpAttack": 70,
+            "SpDefense": 60,
+            "Speed": 80
           }
         }
       },
