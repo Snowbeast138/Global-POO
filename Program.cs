@@ -55,7 +55,27 @@ class Program
 {
     static void Main()
     {
-        TeamMenu();
+        WriteLine("1-Mostrar Pokedex\n2-Buscar Pokemon\n3-Menu de Equipos");
+        int res;
+        while(!int.TryParse(ReadLine(), out res)|| res > 3 || res < 1){
+            WriteLine("Esa no es una opcion");
+        }
+
+        switch (res)
+        {
+            case 1:{
+                ShowPokedex(DeserializePokedexJson());
+            }break;
+            case 2:{
+                WriteLine("Que pokemon Quieres buscar");
+                string pokemon = ReadLine();
+                ShowPokemon(findPokemon(DeserializePokedexJson(),pokemon));
+            }break;
+            case 3:{
+                TeamMenu();
+            }break;
+            default:{WriteLine("Eso no es una opcion");}break;
+        }
         
     }
 
@@ -394,15 +414,11 @@ class Program
     {
         foreach (var pokemon in pokemons)
         {
-            WriteLine("----------------------------------");
-            WriteLine($"ID: {pokemon.id}");
-
-            WriteLine($"Pokemon: {pokemon.name.english}");
-
-            WriteLine("Tipos:");
+            WriteLine("");
+            Write($"ID: {pokemon.id}  Pokemon:{pokemon.name.english}  Tipos:");
             foreach (var type in pokemon.type)
             {
-                WriteLine($"- {type}");
+                Write($" -{type}");
             }
         }
     }
