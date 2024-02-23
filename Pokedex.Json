@@ -12538,5 +12538,20 @@
       "SpDefense": 65,
       "Speed": 34
     }
+  },
+  {
+    "id": 810,
+    "name": "grookey",
+    "type": [
+      "plant"
+    ],
+    "BaseStats": {
+      "HP": 50,
+      "Attack": 65,
+      "Defense": 50,
+      "SpAttack": 40,
+      "SpDefense": 40,
+      "Speed": 65
+    }
   }
 ]

@@ -13,6 +13,70 @@ public abstract class Pokemon
     public List<string> type { get; set; }
 
     public BaseStats BaseStats { get; set; }
+
+    public void Create(){
+        int id_;
+        string name_;
+        List<string> types_ = new();
+        BaseStats baseStats_= new()
+        ;
+
+        Write("ID:");
+        int.TryParse(ReadLine(), out id_);
+        Write("Nombre:");
+        name_ = ReadLine();
+        Write("Tiene 1 o 2 tipos?:");
+        int res;
+        int.TryParse(ReadLine(), out res);
+        while(res <1|| res >2){
+            Write("Debe ser menor a 2 o mayor a 1 la cantidad de tipos");
+            int.TryParse(ReadLine(), out res);
+
+         }
+
+         for(int i = 1; i<= res; i++){
+            Write($"Tipo {i}:");
+            string typ = ReadLine();
+            typ = typ.ToLower();
+            types_.Add(typ);
+         }
+
+        Write("HP:");
+        int hp;
+        int.TryParse(ReadLine(), out hp);
+        baseStats_.HP = hp;
+
+        Write("Attack:");
+        int Attack;
+        int.TryParse(ReadLine(), out Attack);
+        baseStats_.Attack = Attack;
+
+        Write("Defense:");
+        int Defense;
+        int.TryParse(ReadLine(), out Defense);
+        baseStats_.Defense = Defense;
+
+        Write("SpAttack:");
+        int SpAttack;
+        int.TryParse(ReadLine(), out SpAttack);
+        baseStats_.SpAttack = SpAttack;
+
+        Write("SpDefense:");
+        int SpDefense;
+        int.TryParse(ReadLine(), out SpDefense);
+        baseStats_.SpDefense = SpDefense;
+
+        Write("Speed:");
+        int Speed;
+        int.TryParse(ReadLine(), out Speed);
+        baseStats_.Speed = Speed;
+
+         this.id = id_;
+         this.name = name_.ToLower();
+         this.type = types_;
+         this.BaseStats = baseStats_;
+
+    }
 }
 
 public class BaseStats
@@ -78,6 +142,8 @@ public class EntityPokemon : Pokemon, IActionsPokemon
         WriteLine($"Velocidad: {this.BaseStats.Speed}");
         WriteLine("--------------------------------------------");
     }
+
+    
 }
 
 public interface IActionsTeam
@@ -192,9 +258,9 @@ partial class Program
 {
     static void Main()
     {
-        WriteLine("1-Mostrar Pokedex\n2-Buscar Pokemon\n3-Menu de Equipos");
+        WriteLine("1-Mostrar Pokedex\n2-Buscar Pokemon\n3-Menu de Equipos\n4-Agregar Pokemon");
         int res;
-        while (!int.TryParse(ReadLine(), out res) || res > 3 || res < 1)
+        while (!int.TryParse(ReadLine(), out res) || res > 4 || res < 1)
         {
             WriteLine("Esa no es una opcion");
         }
@@ -215,12 +281,28 @@ partial class Program
                     TeamMenu();
                 }
                 break;
+            case 4:{
+                AddPokemon();
+            }break;
             default:
                 {
                     WriteLine("Eso no es una opcion");
                 }
                 break;
         }
+    }
+
+    static void AddPokemon(){
+        List<EntityPokemon> pokemons = DeserializePokedexJson();
+        EntityPokemon newPokemon = new EntityPokemon();
+        newPokemon.Create();
+
+        pokemons.Add(newPokemon);
+
+        string json = JsonSerializer.Serialize(pokemons, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("./Pokedex.Json",json);
+        WriteLine("Pokemon Agregado Correctamente!");
+
     }
 
     static List<EntityPokemon> DeserializePokedexJson()
