@@ -383,23 +383,7 @@ partial class Program
         string json = JsonSerializer.Serialize(updatedTeams, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText("./Teams.Json",json);
      }
-    // static Team findTeam(int TeamId){
-    //     List<Team> teams = DeserializeTeamsJson();
-    //     if(teams.Find(x=> x.TeamId == TeamId)!=null){
-    //         Team team = teams.Find(x=> x.TeamId == TeamId);
-    //         return team;
-    //     }else{
-    //         int res;
-    //         do{
-    //         WriteLine("No existe ese team id");
-    //          while(!int.TryParse(ReadLine(), out res)){
-    //             WriteLine("Ese no es un TeamId");
-    //          }
-    //         }while(teams.Find(x=> x.TeamId == res)==null);
-    //         Team team = teams.Find(x=> x.TeamId == res);
-    //         return team;
-    //     }
-    // }
+    
     static void findPokemon()
     {
         WriteLine("Que pokemon Quieres buscar");
