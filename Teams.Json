@@ -1,54 +1,31 @@
 [
   {
-    "TeamId": 81,
+    "TeamId": 574,
     "pokemonsTeam": [
       {
         "PokemonTeamId": 1,
         "pokemon": {
-          "id": 9,
-          "name": {
-            "english": "blastoise"
-          },
+          "id": 94,
+          "name": "gengar",
           "type": [
-            "Water"
+            "Ghost",
+            "Poison"
           ],
           "BaseStats": {
-            "HP": 79,
-            "Attack": 83,
-            "Defense": 100,
-            "SpAttack": 85,
-            "SpDefense": 105,
-            "Speed": 78
+            "HP": 60,
+            "Attack": 65,
+            "Defense": 60,
+            "SpAttack": 130,
+            "SpDefense": 75,
+            "Speed": 110
           }
         }
       },
       {
         "PokemonTeamId": 2,
         "pokemon": {
-          "id": 4,
-          "name": {
-            "english": "charmander"
-          },
-          "type": [
-            "Fire"
-          ],
-          "BaseStats": {
-            "HP": 39,
-            "Attack": 52,
-            "Defense": 43,
-            "SpAttack": 60,
-            "SpDefense": 50,
-            "Speed": 65
-          }
-        }
-      },
-      {
-        "PokemonTeamId": 3,
-        "pokemon": {
           "id": 473,
-          "name": {
-            "english": "mamoswine"
-          },
+          "name": "mamoswine",
           "type": [
             "Ice",
             "Ground"
@@ -64,192 +41,75 @@
         }
       },
       {
+        "PokemonTeamId": 3,
+        "pokemon": {
+          "id": 778,
+          "name": "mimikyu",
+          "type": [
+            "Ghost",
+            "Fairy"
+          ],
+          "BaseStats": {
+            "HP": 55,
+            "Attack": 90,
+            "Defense": 80,
+            "SpAttack": 50,
+            "SpDefense": 105,
+            "Speed": 96
+          }
+        }
+      },
+      {
         "PokemonTeamId": 4,
         "pokemon": {
-          "id": 523,
-          "name": {
-            "english": "zebstrika"
-          },
+          "id": 745,
+          "name": "lycanroc",
           "type": [
-            "Electric"
+            "Rock"
           ],
           "BaseStats": {
             "HP": 75,
-            "Attack": 100,
-            "Defense": 63,
-            "SpAttack": 80,
-            "SpDefense": 63,
-            "Speed": 116
+            "Attack": 115,
+            "Defense": 65,
+            "SpAttack": 55,
+            "SpDefense": 65,
+            "Speed": 112
           }
         }
       },
       {
         "PokemonTeamId": 5,
         "pokemon": {
-          "id": 284,
-          "name": {
-            "english": "masquerain"
-          },
+          "id": 65,
+          "name": "alakazam",
           "type": [
-            "Bug",
-            "Flying"
-          ],
-          "BaseStats": {
-            "HP": 70,
-            "Attack": 60,
-            "Defense": 62,
-            "SpAttack": 100,
-            "SpDefense": 82,
-            "Speed": 80
-          }
-        }
-      },
-      {
-        "PokemonTeamId": 6,
-        "pokemon": {
-          "id": 521,
-          "name": {
-            "english": "unfezant"
-          },
-          "type": [
-            "Normal",
-            "Flying"
-          ],
-          "BaseStats": {
-            "HP": 80,
-            "Attack": 115,
-            "Defense": 80,
-            "SpAttack": 65,
-            "SpDefense": 55,
-            "Speed": 93
-          }
-        }
-      }
-    ]
-  },
-  {
-    "TeamId": 328,
-    "pokemonsTeam": [
-      {
-        "PokemonTeamId": 1,
-        "pokemon": {
-          "id": 687,
-          "name": {
-            "english": "malamar"
-          },
-          "type": [
-            "Dark",
             "Psychic"
           ],
           "BaseStats": {
-            "HP": 86,
-            "Attack": 92,
-            "Defense": 88,
-            "SpAttack": 68,
-            "SpDefense": 75,
-            "Speed": 73
-          }
-        }
-      },
-      {
-        "PokemonTeamId": 2,
-        "pokemon": {
-          "id": 12,
-          "name": {
-            "english": "butterfree"
-          },
-          "type": [
-            "Bug",
-            "Flying"
-          ],
-          "BaseStats": {
-            "HP": 60,
-            "Attack": 45,
-            "Defense": 50,
-            "SpAttack": 90,
-            "SpDefense": 80,
-            "Speed": 70
-          }
-        }
-      },
-      {
-        "PokemonTeamId": 3,
-        "pokemon": {
-          "id": 556,
-          "name": {
-            "english": "maractus"
-          },
-          "type": [
-            "Grass"
-          ],
-          "BaseStats": {
-            "HP": 75,
-            "Attack": 86,
-            "Defense": 67,
-            "SpAttack": 106,
-            "SpDefense": 67,
-            "Speed": 60
-          }
-        }
-      },
-      {
-        "PokemonTeamId": 4,
-        "pokemon": {
-          "id": 263,
-          "name": {
-            "english": "zigzagoon"
-          },
-          "type": [
-            "Normal"
-          ],
-          "BaseStats": {
-            "HP": 38,
-            "Attack": 30,
-            "Defense": 41,
-            "SpAttack": 30,
-            "SpDefense": 41,
-            "Speed": 60
-          }
-        }
-      },
-      {
-        "PokemonTeamId": 5,
-        "pokemon": {
-          "id": 689,
-          "name": {
-            "english": "barbaracle"
-          },
-          "type": [
-            "Rock",
-            "Water"
-          ],
-          "BaseStats": {
-            "HP": 72,
-            "Attack": 105,
-            "Defense": 115,
-            "SpAttack": 54,
-            "SpDefense": 86,
-            "Speed": 68
+            "HP": 55,
+            "Attack": 50,
+            "Defense": 45,
+            "SpAttack": 135,
+            "SpDefense": 95,
+            "Speed": 120
           }
         }
       },
       {
         "PokemonTeamId": 6,
         "pokemon": {
-          "id": 71,
-          "name": {
-            "english": "victreebel"
-          },
+          "id": 425,
+          "name": "drifloon",
           "type": [
-            "Grass",
-            "Poison"
+            "Ghost",
+            "Flying"
           ],
           "BaseStats": {
-            "HP": 80,
-            "Attack": 105,
-            "Defense": 65,
-            "SpAttack": 100,
-            "SpDefense": 70,
+            "HP": 90,
+            "Attack": 50,
+            "Defense": 34,
+            "SpAttack": 60,
+            "SpDefense": 44,
             "Speed": 70
           }
         }

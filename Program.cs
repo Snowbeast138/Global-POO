@@ -2,20 +2,17 @@
 
 using static System.Console;
 
-public class Pokemon
+public abstract class Pokemon
 {
+    public abstract void ShowStats();
+
     public int id { get; set; }
 
-    public name name { get; set; }
+    public string name { get; set; }
 
     public List<string> type { get; set; }
 
     public BaseStats BaseStats { get; set; }
-}
-
-public class name
-{
-    public string english { get; set; }
 }
 
 public class BaseStats
@@ -33,344 +30,18 @@ public class BaseStats
     public int Speed { get; set; }
 }
 
-public class Team{
-    public int TeamId{get;set;}
-    public List<PokemonTeam> pokemonsTeam {get; set;} = new List<PokemonTeam>();
-}
-
-public class PokemonTeam{
-    public PokemonTeam(int PokemonTeamId, Pokemon? pokemon)
-    {
-        this.PokemonTeamId = PokemonTeamId;
-        this.pokemon = pokemon;
-    }
-
-    public int PokemonTeamId{ get; set;}
-    public Pokemon pokemon{get; set;}
-    // public int Id { get; }
-}
-
-
-class Program
+interface IActionsPokemon
 {
-    static void Main()
+    EntityPokemon findPokemon(List<EntityPokemon> pokemons, string name);
+}
+
+public class EntityPokemon : Pokemon, IActionsPokemon
+{
+    public EntityPokemon findPokemon(List<EntityPokemon> pokemons, string name)
     {
-        WriteLine("1-Mostrar Pokedex\n2-Buscar Pokemon\n3-Menu de Equipos");
-        int res;
-        while(!int.TryParse(ReadLine(), out res)|| res > 3 || res < 1){
-            WriteLine("Esa no es una opcion");
-        }
-
-        switch (res)
+        if (pokemons.Find(x => x.name == name) != null)
         {
-            case 1:{
-                ShowPokedex(DeserializePokedexJson());
-            }break;
-            case 2:{
-                WriteLine("Que pokemon Quieres buscar");
-                string pokemon = ReadLine();
-                ShowPokemon(findPokemon(DeserializePokedexJson(),pokemon));
-            }break;
-            case 3:{
-                TeamMenu();
-            }break;
-            default:{WriteLine("Eso no es una opcion");}break;
-        }
-        
-    }
-
-    static List<Pokemon> DeserializePokedexJson(){
-        string path = "./Pokedex.Json";
-
-        if (File.Exists(path))
-        {
-            string jsonString = File.ReadAllText(path);
-
-            List<Pokemon> pokemons =
-                JsonSerializer.Deserialize<List<Pokemon>>(jsonString);
-            return pokemons;
-        }
-        else
-        {
-            WriteLine("El archivo Pokedex.Json no existe o a Sido Borrado.");
-            return null;
-        }
-    }
-
-
-    static void TeamMenu(){
-        WriteLine("1-Mostrar Equipos\n2-Crear Equipo\n3-Generar Equipo Random\n4-Modificar Equipo\n5-Eliminar Equipo");
-        int res;
-        while(!int.TryParse(ReadLine(), out res)|| res > 5 || res < 1){
-            WriteLine("Esa no es una opcion");
-        }
-
-        switch (res)
-        {
-            case 1:{
-                ShowTeams();
-            }break;
-            case 2:{
-                WriteLine("Vamos a crear un equipo!");
-                CreateTeam();
-            }break;
-            case 3:{
-                CreateRandomTeam();
-            }break;
-            case 4:{
-                UpdateTeam();
-            }break;
-            case 5:{
-                DeleteTeam();
-            }break;
-            default:{WriteLine("Eso no es una opcion");}break;
-        }
-    }
-
-    static List<Team> DeserializeTeamsJson(){
-        string path = "./Teams.Json";
-
-        if (File.Exists(path))
-        {
-            string jsonString = File.ReadAllText(path);
-
-            if(jsonString!=""){
-                List<Team> teams =
-                    JsonSerializer.Deserialize<List<Team>>(jsonString);
-                    
-                return teams;
-            }
-            else{
-                List<Team> teams = new(); 
-                return teams;
-            }
-
-        }
-        else
-        {
-            WriteLine("El archivo Teams.Json no existe o a Sido Borrado.");
-            return null;
-        }
-    }
-
-    static void ShowTeams(){
-        List<Team> teams = DeserializeTeamsJson();
-        if(teams.Count > 0){
-            foreach(var team in teams){
-                WriteLine("----------------------------");
-                // WriteLine($"TeamId:{team.TeamId}");
-                WriteLine("Equipo Pokemon:");
-                foreach(var pokemon in team.pokemonsTeam){
-                    WriteLine($"PokemonTeamId:{pokemon.PokemonTeamId}");
-                    WriteLine($"-{pokemon.pokemon.name.english}");
-                    WriteLine("Type/s:");
-                    foreach(var type in pokemon.pokemon.type){
-                        WriteLine($" -{type}");
-                    }
-                    WriteLine();
-                }
-                WriteLine("------------------------");
-            }
-        }
-        else{
-            WriteLine("No hay Equipos Guardados");
-        }
-    }
-
-    static void ShowTeam(Team team){
-     WriteLine("----------------------------");
-     WriteLine($"TeamId:{team.TeamId}");
-     WriteLine("Equipo Pokemon:");
-     foreach(var pokemon in team.pokemonsTeam){
-        WriteLine($"PokemonTeamId:{pokemon.PokemonTeamId}");
-        WriteLine($"-{pokemon.pokemon.name.english}");
-        WriteLine("Type/s:");
-        foreach(var type in pokemon.pokemon.type){
-            WriteLine($" -{type}");
-        }
-        WriteLine();
-        }
-     WriteLine("------------------------");
-
-    }
-
-
-     static void CreateTeam(){
-        List<Team> teams = DeserializeTeamsJson();
-            
-        Random random = new Random();
-        int TeamId = random.Next(1,1000);
-            
-        while(teams.Any(x=> x.TeamId == TeamId)){
-            TeamId = random.Next(1,1000);
-        }
-        
-        Team team = new();
-        team.TeamId = TeamId;
-
-        for(int i = 1; i <= 6; i++){
-            Write($"Pokemon {i}:");
-            string res = ReadLine();
-            PokemonTeam pokemonTeam = new(i, findPokemon(DeserializePokedexJson(), res));
-            team.pokemonsTeam.Add(pokemonTeam);
-        }
-
-        teams.Add(team);
-
-        string json = JsonSerializer.Serialize(teams, new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText("./Teams.Json",json);
-
-        WriteLine("Equipo creado Correctamente!");
-        ShowTeam(team);
-     }
-
-     static void CreateRandomTeam(){
-        List<Team> teams = DeserializeTeamsJson();
-
-        List<Pokemon> pokemons = DeserializePokedexJson();
-       
-        Team randomTeam = new();
-
-        Random random = new Random();
-        
-        int TeamId = random.Next(1,1000);
-
-        while(teams.Any(x=> x.TeamId == TeamId)){
-            TeamId = random.Next(1,1000);
-        }
-
-        randomTeam.TeamId = TeamId;
-
-        for(int i = 1; i<=6;i++){
-            int id = random.Next(1,809);
-            while(randomTeam.pokemonsTeam.Any(x=> x.pokemon.id == id)){
-                id = random.Next(1,809);
-            }
-           PokemonTeam pokemon = new(i,pokemons.Find(x=>x.id == id));
-           randomTeam.pokemonsTeam.Add(pokemon);
-        }
-
-        teams.Add(randomTeam);
-        
-        string json = JsonSerializer.Serialize(teams, new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText("./Teams.Json",json);
-        
-        WriteLine("Equipo creado Correctamente!");
-        ShowTeam(randomTeam);
-     }
-
-
-    static void UpdateTeam(){
-        ShowTeams();
-        Write("Ingresa el TeamId del equipo que deseas Modificar:");
-    
-        int res;
-        
-        while(!int.TryParse(ReadLine(), out res)){
-            WriteLine("Ese no es un TeamId");
-        }
-        
-        Team teamToUpdate = findTeam(res);
-        ShowTeam(teamToUpdate);
-
-        WriteLine("Que pokemon quieres modificar?:"); 
-        int pokemonId;
-        
-        while(!int.TryParse(ReadLine(), out pokemonId)|| pokemonId < 1 || pokemonId > 6){
-            WriteLine("Ese no es un PokemonTeamId");
-        }
-
-        WriteLine("Por cual pokemon deseas cambiarlo?:");
-        string name = ReadLine();
-        PokemonTeam newPokemon = new(pokemonId, findPokemon(DeserializePokedexJson(), name));
-        
-        int index = teamToUpdate.pokemonsTeam.FindIndex(x => x.PokemonTeamId == pokemonId);
-
-        if (index != -1)
-        {
-            teamToUpdate.pokemonsTeam[index] = newPokemon;
-            WriteLine("Pokemon cambiado exitosamente.");
-        }
-        else
-        {
-            WriteLine("No se encontró el Pokémon con el PokemonTeamId especificado.");
-        }
-
-        List<Team> teams = DeserializeTeamsJson();
-        List<Team> updatedTeams = new();
-
-        foreach (var team in teams)
-        {
-            if(team.TeamId!=teamToUpdate.TeamId){
-                updatedTeams.Add(team);
-            }else{
-                updatedTeams.Add(teamToUpdate);
-            }
-        }
-        WriteLine($"Equipo {teamToUpdate.TeamId} Actualizado");
-        string json = JsonSerializer.Serialize(updatedTeams, new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText("./Teams.Json",json);
-        ShowTeam(teamToUpdate);
-
-    }
-
-
-     static void DeleteTeam(){
-        ShowTeams();
-        Write("Ingresa el TeamId del equipo que deseas eliminar:");
-        int res;
-        while(!int.TryParse(ReadLine(), out res)){
-            WriteLine("Ese no es un TeamId");
-        }
-        Team teamToDelte = findTeam(res);
-        List<Team> teams = DeserializeTeamsJson();
-        List<Team> updatedTeams = new();
-
-        foreach (var team in teams)
-        {
-            if(team.TeamId!=teamToDelte.TeamId){
-                updatedTeams.Add(team);
-            }
-        }
-        
-        WriteLine($"Equipo {teamToDelte.TeamId} Eliminado");
-        string json = JsonSerializer.Serialize(updatedTeams, new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText("./Teams.Json",json);
-       
-     }
-
-    static Team findTeam(int TeamId){
-        List<Team> teams = DeserializeTeamsJson();
-        if(teams.Find(x=> x.TeamId == TeamId)!=null){
-            
-            Team team = teams.Find(x=> x.TeamId == TeamId);
-            return team;
-        }else{
-            int res;
-            do{
-            WriteLine("No existe ese team id");
-             while(!int.TryParse(ReadLine(), out res)){
-                WriteLine("Ese no es un TeamId");
-             }
-            }while(teams.Find(x=> x.TeamId == res)==null);
-            Team team = teams.Find(x=> x.TeamId == res);
-            return team;
-        }
-    }
-
-
-    static Pokemon findPokemon(List<Pokemon> pokemons, string name)
-    {
-        Pokemon pokemon = new();
-
-        name = name.ToLower();
-
-
-        if (pokemons.Find(x => x.name.english == name) != null)
-        {
-            pokemon =  pokemons.Find(x => x.name.english == name);
-            // ShowPokemon(pokemon);
-            return pokemon;
+            return pokemons.Find(x => x.name == name);
         }
         else
         {
@@ -382,40 +53,368 @@ class Program
                 res = ReadLine();
                 res = res.ToLower();
             }
-            while (pokemons.Find(x => x.name.english == res) == null);
-            pokemon = pokemons.Find(x => x.name.english == res);
-            // ShowPokemon(pokemon);
-            return pokemon;
+            while (pokemons.Find(x => x.name == res) == null);
+            return pokemons.Find(x => x.name == res);
         }
     }
 
-    static void ShowPokemon(Pokemon pokemon)
+    public override void ShowStats()
     {
-        WriteLine($"ID: {pokemon.id}");
-
-        WriteLine($"Pokemon: {pokemon.name.english}");
-
+        WriteLine("--------------------------------------------");
+        WriteLine($"ID: {this.id}");
+        WriteLine($"Pokemon: {this.name}");
         WriteLine("Tipos:");
-        foreach (var type in pokemon.type)
+        foreach (var type in this.type)
         {
             WriteLine($"- {type}");
         }
         WriteLine();
         WriteLine("Estadísticas base:");
-        WriteLine($"HP: {pokemon.BaseStats.HP}");
-        WriteLine($"Ataque: {pokemon.BaseStats.Attack}");
-        WriteLine($"Defensa: {pokemon.BaseStats.Defense}");
-        WriteLine($"Ataque Especial: {pokemon.BaseStats.SpAttack}");
-        WriteLine($"Defensa Especial: {pokemon.BaseStats.SpDefense}");
-        WriteLine($"Velocidad: {pokemon.BaseStats.Speed}");
+        WriteLine($"HP: {this.BaseStats.HP}");
+        WriteLine($"Ataque: {this.BaseStats.Attack}");
+        WriteLine($"Defensa: {this.BaseStats.Defense}");
+        WriteLine($"Ataque Especial: {this.BaseStats.SpAttack}");
+        WriteLine($"Defensa Especial: {this.BaseStats.SpDefense}");
+        WriteLine($"Velocidad: {this.BaseStats.Speed}");
+        WriteLine("--------------------------------------------");
+    }
+}
+
+public interface IActionsTeam
+{
+    Team FindTeam(List<Team> teams, int id);
+
+    Team CreateTeam(List<Team> teams, List<EntityPokemon> pokemons, bool randomTeam);
+    Team ReplacePokemon(Team team, int id, PokemonTeam newPokemon);
+}
+
+public class Team : IActionsTeam
+{
+    public int TeamId { get; set; }
+
+    public List<PokemonTeam> pokemonsTeam
+    { get; set;
+    } = new List<PokemonTeam>();
+
+    public Team ReplacePokemon(Team team, int id, PokemonTeam newPokemon)
+    {
+        int index = team.pokemonsTeam.FindIndex(x => x.PokemonTeamId == id);
+        if (index != 1)
+        {
+            team.pokemonsTeam[index] = newPokemon;
+        }
+        return team;
     }
 
-    static void ShowPokedex(List<Pokemon> pokemons)
+    public Team FindTeam(List<Team> teams, int id)
+    {
+        if (teams.Find(x => x.TeamId == id) != null)
+        {
+            Team team = teams.Find(x => x.TeamId == id); 
+            team.ShowTeam();
+            return team;
+        }
+        else
+        {
+            int res;
+            do
+            {
+                WriteLine("No existe ese team id");
+                while (!int.TryParse(ReadLine(), out res))
+                {
+                    WriteLine("Ese no es un TeamId");
+                }
+            }
+            while (teams.Find(x => x.TeamId == res) == null);
+            Team team =teams.Find(x => x.TeamId == res);
+             team.ShowTeam();
+            return team;
+        }
+    }
+
+    public void ShowTeam(){
+        WriteLine("----------------------------");
+        WriteLine($"TeamId:{this.TeamId}");
+        WriteLine("Equipo Pokemon:");
+        foreach(var pokemonTeam in this.pokemonsTeam){
+            WriteLine($"PokemonTeamID:{pokemonTeam.PokemonTeamId}");
+            pokemonTeam.pokemon.ShowStats();
+            WriteLine();
+            }
+    }
+
+    public Team CreateTeam(List<Team> teams, List<EntityPokemon> pokemons, bool randomTeam){
+        Random random = new Random();
+        int TeamId = random.Next(1,1000);
+        while(teams.Any(x=> x.TeamId == TeamId)){
+            TeamId = random.Next(1,1000);
+        }
+        Team team = new();
+        team.TeamId = TeamId;
+
+        if(randomTeam == false){
+            for(int i = 1; i <= 6; i++){
+                Write($"Pokemon {i}:");
+                string res = ReadLine();
+                EntityPokemon pokemon = new();
+                PokemonTeam pokemonTeam = new(i, pokemon.findPokemon(pokemons, res.ToLower()));
+                team.pokemonsTeam.Add(pokemonTeam);
+            }
+        }
+        else{
+            for(int i = 1; i<=6;i++){
+            int id = random.Next(1,809);
+            while(team.pokemonsTeam.Any(x=> x.pokemon.id == id)){
+                id = random.Next(1,809);
+            }
+            PokemonTeam pokemon = new(i,pokemons.Find(x=>x.id == id));
+            team.pokemonsTeam.Add(pokemon);
+        }
+        }
+        return team;
+    }
+}
+
+public class PokemonTeam
+{
+    public PokemonTeam(int PokemonTeamId, EntityPokemon? pokemon)
+    {
+        this.PokemonTeamId = PokemonTeamId;
+        this.pokemon = pokemon;
+    }
+
+    public int PokemonTeamId { get; set; }
+
+    public EntityPokemon pokemon { get; set; }
+}
+
+partial class Program
+{
+    static void Main()
+    {
+        WriteLine("1-Mostrar Pokedex\n2-Buscar Pokemon\n3-Menu de Equipos");
+        int res;
+        while (!int.TryParse(ReadLine(), out res) || res > 3 || res < 1)
+        {
+            WriteLine("Esa no es una opcion");
+        }
+        switch (res)
+        {
+            case 1:
+                {
+                    ShowPokedex(DeserializePokedexJson());
+                }
+                break;
+            case 2:
+                {
+                    findPokemon();
+                }
+                break;
+            case 3:
+                {
+                    TeamMenu();
+                }
+                break;
+            default:
+                {
+                    WriteLine("Eso no es una opcion");
+                }
+                break;
+        }
+    }
+
+    static List<EntityPokemon> DeserializePokedexJson()
+    {
+        string path = "./Pokedex.Json";
+
+        if (File.Exists(path))
+        {
+            string jsonString = File.ReadAllText(path);
+
+            List<EntityPokemon> pokemons =
+                JsonSerializer.Deserialize<List<EntityPokemon>>(jsonString);
+
+            return pokemons;
+        }
+        else
+        {
+            WriteLine("El archivo Pokedex.Json no existe o a Sido Borrado.");
+            return null;
+        }
+    }
+
+    static void TeamMenu(){
+        WriteLine("1-Mostrar Equipos\n2-Crear Equipo\n3-Generar Equipo Random\n4-Modificar Equipo\n5-Eliminar Equipo");
+        int res;
+        while(!int.TryParse(ReadLine(), out res)|| res > 5 || res < 1){
+            WriteLine("Esa no es una opcion");
+        }
+        switch (res)
+        {
+            case 1:{
+                ShowTeams();
+            }break;
+            case 2:{
+                WriteLine("Vamos a crear un equipo!");
+                CreateTeam(false);
+            }break;
+            case 3:{
+                CreateTeam(true);
+            }break;
+            case 4:{
+                UpdateTeam();
+            }break;
+            case 5:{
+                DeleteTeam();
+            }break;
+            default:{WriteLine("Eso no es una opcion");}break;
+        }
+    }
+    static List<Team> DeserializeTeamsJson(){
+        string path = "./Teams.Json";
+        if (File.Exists(path))
+        {
+            string jsonString = File.ReadAllText(path);
+            if(jsonString!=""){
+                List<Team> teams =
+                    JsonSerializer.Deserialize<List<Team>>(jsonString);
+                return teams;
+            }
+            else{
+                List<Team> teams = new();
+                return teams;
+            }
+        }
+        else
+        {
+            WriteLine("El archivo Teams.Json no existe o a Sido Borrado.");
+            return null;
+        }
+    }
+    static void ShowTeams(){
+        List<Team> teams = DeserializeTeamsJson();
+        if(teams.Count > 0){
+            foreach(var team in teams){
+                team.ShowTeam();
+                WriteLine("------------------------");
+            }
+        }
+        else{
+            WriteLine("No hay Equipos Guardados");
+        }
+    }
+  
+     static void CreateTeam(bool randomTeam){
+        List<Team> teams = DeserializeTeamsJson();
+        List<EntityPokemon> pokemons = DeserializePokedexJson();
+        Team newTeam = new();
+        newTeam = newTeam.CreateTeam(teams, pokemons, randomTeam);
+        
+        teams.Add(newTeam);
+        string json = JsonSerializer.Serialize(teams, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("./Teams.Json",json);
+        WriteLine("Equipo creado Correctamente!");
+
+        newTeam.ShowTeam();
+     }
+
+    static void UpdateTeam(){
+        List<Team> teams = DeserializeTeamsJson();
+        List<EntityPokemon> pokemons = DeserializePokedexJson();
+        ShowTeams();
+        Write("Ingresa el TeamId del equipo que deseas Modificar:");
+        int res;
+        while(!int.TryParse(ReadLine(), out res)){
+            WriteLine("Ese no es un TeamId");
+        }
+        Team teamToUpdate = new();
+        teamToUpdate = teamToUpdate.FindTeam(teams, res);
+
+        WriteLine("Que pokemon quieres modificar?:");
+        int pokemonId;
+        while(!int.TryParse(ReadLine(), out pokemonId)|| pokemonId < 1 || pokemonId > 6){
+            WriteLine("Ese no es un PokemonTeamId");
+        }
+
+        WriteLine("Por cual pokemon deseas cambiarlo?:");
+        string name = ReadLine();
+        EntityPokemon pokemon = new();
+        pokemon = pokemon.findPokemon(pokemons, name.ToLower());
+
+        PokemonTeam pokemonTeam = new(pokemonId, pokemon);
+
+       teamToUpdate=teamToUpdate.ReplacePokemon(teamToUpdate, pokemonId,pokemonTeam);
+        
+        List<Team> updatedTeams = new();
+        foreach (var team in teams)
+        {
+            if(team.TeamId!=teamToUpdate.TeamId){
+                updatedTeams.Add(team);
+            }else{
+                updatedTeams.Add(teamToUpdate);
+            }
+        }
+        WriteLine($"Equipo {teamToUpdate.TeamId} Actualizado");
+        string json = JsonSerializer.Serialize(updatedTeams, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("./Teams.Json",json);
+        teamToUpdate.ShowTeam();
+    }
+
+
+     static void DeleteTeam(){
+        ShowTeams();
+        List<Team> teams = DeserializeTeamsJson();
+        Write("Ingresa el TeamId del equipo que deseas eliminar:");
+        int res;
+        while(!int.TryParse(ReadLine(), out res)){
+            WriteLine("Ese no es un TeamId");
+        }
+        Team teamToDelte = new();
+        teamToDelte = teamToDelte.FindTeam(teams,res);
+        
+        List<Team> updatedTeams = new();
+        foreach (var team in teams)
+        {
+            if(team.TeamId!=teamToDelte.TeamId){
+                updatedTeams.Add(team);
+            }
+        }
+        WriteLine($"Equipo {teamToDelte.TeamId} Eliminado");
+        string json = JsonSerializer.Serialize(updatedTeams, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText("./Teams.Json",json);
+     }
+    // static Team findTeam(int TeamId){
+    //     List<Team> teams = DeserializeTeamsJson();
+    //     if(teams.Find(x=> x.TeamId == TeamId)!=null){
+    //         Team team = teams.Find(x=> x.TeamId == TeamId);
+    //         return team;
+    //     }else{
+    //         int res;
+    //         do{
+    //         WriteLine("No existe ese team id");
+    //          while(!int.TryParse(ReadLine(), out res)){
+    //             WriteLine("Ese no es un TeamId");
+    //          }
+    //         }while(teams.Find(x=> x.TeamId == res)==null);
+    //         Team team = teams.Find(x=> x.TeamId == res);
+    //         return team;
+    //     }
+    // }
+    static void findPokemon()
+    {
+        WriteLine("Que pokemon Quieres buscar");
+        string name = ReadLine();
+        EntityPokemon pokemon =new();
+        pokemon = pokemon.findPokemon(DeserializePokedexJson(), name);
+        pokemon.ShowStats();
+    }
+ 
+    static void ShowPokedex(List<EntityPokemon> pokemons)
     {
         foreach (var pokemon in pokemons)
         {
             WriteLine("");
-            Write($"ID: {pokemon.id}  Pokemon:{pokemon.name.english}  Tipos:");
+            Write($"ID: {pokemon.id}  Pokemon:{pokemon.name}  Tipos:");
             foreach (var type in pokemon.type)
             {
                 Write($" -{type}");
