@@ -117,123 +117,6 @@
     ]
   },
   {
-    "TeamId": 666,
-    "pokemonsTeam": [
-      {
-        "PokemonTeamId": 1,
-        "pokemon": {
-          "id": 443,
-          "name": "gible",
-          "type": [
-            "Dragon",
-            "Ground"
-          ],
-          "BaseStats": {
-            "HP": 58,
-            "Attack": 70,
-            "Defense": 45,
-            "SpAttack": 40,
-            "SpDefense": 45,
-            "Speed": 42
-          }
-        }
-      },
-      {
-        "PokemonTeamId": 2,
-        "pokemon": {
-          "id": 694,
-          "name": "helioptile",
-          "type": [
-            "Electric",
-            "Normal"
-          ],
-          "BaseStats": {
-            "HP": 44,
-            "Attack": 38,
-            "Defense": 33,
-            "SpAttack": 61,
-            "SpDefense": 43,
-            "Speed": 70
-          }
-        }
-      },
-      {
-        "PokemonTeamId": 3,
-        "pokemon": {
-          "id": 641,
-          "name": "tornadus",
-          "type": [
-            "Flying"
-          ],
-          "BaseStats": {
-            "HP": 79,
-            "Attack": 115,
-            "Defense": 70,
-            "SpAttack": 125,
-            "SpDefense": 80,
-            "Speed": 111
-          }
-        }
-      },
-      {
-        "PokemonTeamId": 4,
-        "pokemon": {
-          "id": 230,
-          "name": "kingdra",
-          "type": [
-            "Water",
-            "Dragon"
-          ],
-          "BaseStats": {
-            "HP": 75,
-            "Attack": 95,
-            "Defense": 95,
-            "SpAttack": 95,
-            "SpDefense": 95,
-            "Speed": 85
-          }
-        }
-      },
-      {
-        "PokemonTeamId": 5,
-        "pokemon": {
-          "id": 529,
-          "name": "drilbur",
-          "type": [
-            "Ground"
-          ],
-          "BaseStats": {
-            "HP": 60,
-            "Attack": 85,
-            "Defense": 40,
-            "SpAttack": 30,
-            "SpDefense": 45,
-            "Speed": 68
-          }
-        }
-      },
-      {
-        "PokemonTeamId": 6,
-        "pokemon": {
-          "id": 536,
-          "name": "palpitoad",
-          "type": [
-            "Water",
-            "Ground"
-          ],
-          "BaseStats": {
-            "HP": 75,
-            "Attack": 65,
-            "Defense": 55,
-            "SpAttack": 65,
-            "SpDefense": 55,
-            "Speed": 69
-          }
-        }
-      }
-    ]
-  },
-  {
     "TeamId": 872,
     "pokemonsTeam": [
       {
@@ -331,18 +214,134 @@
       {
         "PokemonTeamId": 6,
         "pokemon": {
-          "id": 571,
-          "name": "zoroark",
+          "id": 720,
+          "name": "hoopa",
           "type": [
-            "Dark"
+            "Psychic",
+            "Ghost"
+          ],
+          "BaseStats": {
+            "HP": 80,
+            "Attack": 110,
+            "Defense": 60,
+            "SpAttack": 150,
+            "SpDefense": 130,
+            "Speed": 70
+          }
+        }
+      }
+    ]
+  },
+  {
+    "TeamId": 743,
+    "pokemonsTeam": [
+      {
+        "PokemonTeamId": 1,
+        "pokemon": {
+          "id": 57,
+          "name": "primeape",
+          "type": [
+            "Fighting"
+          ],
+          "BaseStats": {
+            "HP": 65,
+            "Attack": 105,
+            "Defense": 60,
+            "SpAttack": 60,
+            "SpDefense": 70,
+            "Speed": 95
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 2,
+        "pokemon": {
+          "id": 399,
+          "name": "bidoof",
+          "type": [
+            "Normal"
+          ],
+          "BaseStats": {
+            "HP": 59,
+            "Attack": 45,
+            "Defense": 40,
+            "SpAttack": 35,
+            "SpDefense": 40,
+            "Speed": 31
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 3,
+        "pokemon": {
+          "id": 30,
+          "name": "nidorina",
+          "type": [
+            "Poison"
+          ],
+          "BaseStats": {
+            "HP": 70,
+            "Attack": 62,
+            "Defense": 67,
+            "SpAttack": 55,
+            "SpDefense": 55,
+            "Speed": 56
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 4,
+        "pokemon": {
+          "id": 64,
+          "name": "kadabra",
+          "type": [
+            "Psychic"
+          ],
+          "BaseStats": {
+            "HP": 40,
+            "Attack": 35,
+            "Defense": 30,
+            "SpAttack": 120,
+            "SpDefense": 70,
+            "Speed": 105
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 5,
+        "pokemon": {
+          "id": 407,
+          "name": "roserade",
+          "type": [
+            "Grass",
+            "Poison"
           ],
           "BaseStats": {
             "HP": 60,
-            "Attack": 105,
-            "Defense": 60,
-            "SpAttack": 120,
-            "SpDefense": 60,
-            "Speed": 105
+            "Attack": 70,
+            "Defense": 65,
+            "SpAttack": 125,
+            "SpDefense": 105,
+            "Speed": 90
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 6,
+        "pokemon": {
+          "id": 290,
+          "name": "nincada",
+          "type": [
+            "Bug",
+            "Ground"
+          ],
+          "BaseStats": {
+            "HP": 31,
+            "Attack": 45,
+            "Defense": 90,
+            "SpAttack": 30,
+            "SpDefense": 30,
+            "Speed": 40
           }
         }
       }

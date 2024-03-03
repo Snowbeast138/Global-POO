@@ -12553,5 +12553,20 @@
       "SpDefense": 40,
       "Speed": 65
     }
+  },
+  {
+    "id": 811,
+    "name": "thwackey",
+    "type": [
+      "plant"
+    ],
+    "BaseStats": {
+      "HP": 70,
+      "Attack": 85,
+      "Defense": 70,
+      "SpAttack": 55,
+      "SpDefense": 60,
+      "Speed": 80
+    }
   }
 ]
