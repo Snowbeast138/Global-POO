@@ -1,10 +1,5 @@
 using static System.Console;
 
-interface IActionsPokemon
-{
-    EntityPokemon findPokemon(List<EntityPokemon> pokemons, string name);
-}
-
 public class EntityPokemon : Pokemon, IActionsPokemon
 {
     public EntityPokemon findPokemon(List<EntityPokemon> pokemons, string name)

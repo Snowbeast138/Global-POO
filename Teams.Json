@@ -115,5 +115,237 @@
         }
       }
     ]
+  },
+  {
+    "TeamId": 666,
+    "pokemonsTeam": [
+      {
+        "PokemonTeamId": 1,
+        "pokemon": {
+          "id": 443,
+          "name": "gible",
+          "type": [
+            "Dragon",
+            "Ground"
+          ],
+          "BaseStats": {
+            "HP": 58,
+            "Attack": 70,
+            "Defense": 45,
+            "SpAttack": 40,
+            "SpDefense": 45,
+            "Speed": 42
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 2,
+        "pokemon": {
+          "id": 694,
+          "name": "helioptile",
+          "type": [
+            "Electric",
+            "Normal"
+          ],
+          "BaseStats": {
+            "HP": 44,
+            "Attack": 38,
+            "Defense": 33,
+            "SpAttack": 61,
+            "SpDefense": 43,
+            "Speed": 70
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 3,
+        "pokemon": {
+          "id": 641,
+          "name": "tornadus",
+          "type": [
+            "Flying"
+          ],
+          "BaseStats": {
+            "HP": 79,
+            "Attack": 115,
+            "Defense": 70,
+            "SpAttack": 125,
+            "SpDefense": 80,
+            "Speed": 111
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 4,
+        "pokemon": {
+          "id": 230,
+          "name": "kingdra",
+          "type": [
+            "Water",
+            "Dragon"
+          ],
+          "BaseStats": {
+            "HP": 75,
+            "Attack": 95,
+            "Defense": 95,
+            "SpAttack": 95,
+            "SpDefense": 95,
+            "Speed": 85
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 5,
+        "pokemon": {
+          "id": 529,
+          "name": "drilbur",
+          "type": [
+            "Ground"
+          ],
+          "BaseStats": {
+            "HP": 60,
+            "Attack": 85,
+            "Defense": 40,
+            "SpAttack": 30,
+            "SpDefense": 45,
+            "Speed": 68
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 6,
+        "pokemon": {
+          "id": 536,
+          "name": "palpitoad",
+          "type": [
+            "Water",
+            "Ground"
+          ],
+          "BaseStats": {
+            "HP": 75,
+            "Attack": 65,
+            "Defense": 55,
+            "SpAttack": 65,
+            "SpDefense": 55,
+            "Speed": 69
+          }
+        }
+      }
+    ]
+  },
+  {
+    "TeamId": 872,
+    "pokemonsTeam": [
+      {
+        "PokemonTeamId": 1,
+        "pokemon": {
+          "id": 161,
+          "name": "sentret",
+          "type": [
+            "Normal"
+          ],
+          "BaseStats": {
+            "HP": 35,
+            "Attack": 46,
+            "Defense": 34,
+            "SpAttack": 35,
+            "SpDefense": 45,
+            "Speed": 20
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 2,
+        "pokemon": {
+          "id": 135,
+          "name": "jolteon",
+          "type": [
+            "Electric"
+          ],
+          "BaseStats": {
+            "HP": 65,
+            "Attack": 65,
+            "Defense": 60,
+            "SpAttack": 110,
+            "SpDefense": 95,
+            "Speed": 130
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 3,
+        "pokemon": {
+          "id": 666,
+          "name": "vivillon",
+          "type": [
+            "Bug",
+            "Flying"
+          ],
+          "BaseStats": {
+            "HP": 80,
+            "Attack": 52,
+            "Defense": 50,
+            "SpAttack": 90,
+            "SpDefense": 50,
+            "Speed": 89
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 4,
+        "pokemon": {
+          "id": 180,
+          "name": "flaaffy",
+          "type": [
+            "Electric"
+          ],
+          "BaseStats": {
+            "HP": 70,
+            "Attack": 55,
+            "Defense": 55,
+            "SpAttack": 80,
+            "SpDefense": 60,
+            "Speed": 45
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 5,
+        "pokemon": {
+          "id": 18,
+          "name": "pidgeot",
+          "type": [
+            "Normal",
+            "Flying"
+          ],
+          "BaseStats": {
+            "HP": 83,
+            "Attack": 80,
+            "Defense": 75,
+            "SpAttack": 70,
+            "SpDefense": 70,
+            "Speed": 101
+          }
+        }
+      },
+      {
+        "PokemonTeamId": 6,
+        "pokemon": {
+          "id": 571,
+          "name": "zoroark",
+          "type": [
+            "Dark"
+          ],
+          "BaseStats": {
+            "HP": 60,
+            "Attack": 105,
+            "Defense": 60,
+            "SpAttack": 120,
+            "SpDefense": 60,
+            "Speed": 105
+          }
+        }
+      }
+    ]
   }
 ]
